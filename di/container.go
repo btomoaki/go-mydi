@@ -4,6 +4,7 @@ import (
 	"github.com/btomoaki/go-mydi/app"
 	"github.com/btomoaki/go-mydi/domain/iface"
 	"github.com/btomoaki/go-mydi/domain/service/web"
+	"github.com/btomoaki/go-mydi/infra/config"
 	"github.com/btomoaki/go-mydi/infra/router"
 )
 
@@ -17,10 +18,20 @@ func New() *Di {
 	}
 }
 
+func (di *Di) Env() map[string]string {
+	name := "Env"
+	if _, ok := di.Container[name]; ok == false {
+		item := &config.Env{}
+
+		di.Container[name] = item.LoadEnv()
+	}
+	return di.Container[name].(map[string]string)
+}
+
 func (di *Di) Contoror() *app.Contoror {
 	name := "Contoror"
 	if _, ok := di.Container[name]; ok == false {
-		item := &app.Contoror{Server: di.WebServer(), IndexService: di.IndexService()}
+		item := &app.Contoror{EnvMap: di.Env(), Server: di.WebServer(), IndexService: di.IndexService()}
 		di.Container[name] = item
 	}
 	return di.Container[name].(*app.Contoror)

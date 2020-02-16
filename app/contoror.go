@@ -6,6 +6,7 @@ import (
 )
 
 type Contoror struct {
+	EnvMap       map[string]string
 	Server       iface.Router
 	IndexService web.IndexServiceInterface
 }
@@ -21,5 +22,5 @@ func (c *Contoror) RenderTemplate() {
 }
 
 func (c *Contoror) Run() {
-	c.Server.Run(":8080")
+	c.Server.Run(":" + c.EnvMap["Port"])
 }
