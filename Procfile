@@ -1,1 +1,1 @@
-web: goweb
+web: bin/start-nginx goweb
