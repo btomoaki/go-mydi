@@ -23,6 +23,7 @@ func NewRouter(render render.HTMLRender) *Router {
 func (r *Router) Run(addr ...string) (err error) {
 	fmt.Println("###########fff#######################")
 	runerr := r.Gin.RunUnix("/tmp/nginx.socket")
+	fmt.Println("###########fff#######################")
 	if runerr == nil {
 		ioutil.WriteFile("/tmp/app-initialized", []byte("\n"), os.ModePerm)
 	}
