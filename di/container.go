@@ -3,7 +3,7 @@ package di
 import (
 	"../app"
 	"../domain/iface"
-	"../domain/service"
+	"../domain/service/web"
 	"../infra/router"
 )
 
@@ -20,19 +20,19 @@ func New() *Di {
 func (di *Di) Contoror() *app.Contoror {
 	name := "Contoror"
 	if _, ok := di.Container[name]; ok == false {
-		item := &app.Contoror{Server: di.WebServer(), Render: di.Render(), WebService: di.WebService()}
+		item := &app.Contoror{Server: di.WebServer(), IndexService: di.IndexService()}
 		di.Container[name] = item
 	}
 	return di.Container[name].(*app.Contoror)
 }
 
-func (di *Di) WebService() *service.WebService {
-	name := "WebService"
+func (di *Di) IndexService() *web.IndexService {
+	name := "IndexService"
 	if _, ok := di.Container[name]; ok == false {
-		item := &service.WebService{}
+		item := &web.IndexService{Render: di.Render()}
 		di.Container[name] = item
 	}
-	return di.Container[name].(*service.WebService)
+	return di.Container[name].(*web.IndexService)
 }
 
 func (di *Di) WebServer() iface.Router {

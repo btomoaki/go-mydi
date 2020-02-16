@@ -2,30 +2,22 @@ package app
 
 import (
 	"../domain/iface"
-	"../domain/service"
-	"github.com/gin-gonic/gin"
+	"../domain/service/web"
 )
 
 type Contoror struct {
-	Server     iface.Router
-	Render     iface.Render
-	WebService *service.WebService
+	Server       iface.Router
+	IndexService web.IndexServiceInterface
 }
 
 func (c *Contoror) MapRoute() {
-	c.Server.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(c.WebService.Index())
-	})
-
+	c.Server.GET("/", c.IndexService.Get())
+	//c.Server.PUT("/", c.WebService.Index("put"))
+	//c.Server.POST("/", c.WebService.Index("post"))
 }
 
 func (c *Contoror) RenderTemplate() {
-
-	c.Render.AddFromFiles("index",
-		"templates/common/base.html",
-		"templates/common/header.html",
-		"templates/index.html")
-
+	c.IndexService.RenderIndex()
 }
 
 func (c *Contoror) Run() {

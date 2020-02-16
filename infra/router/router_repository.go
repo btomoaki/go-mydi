@@ -23,3 +23,9 @@ func (r *Router) Run(addr ...string) (err error) {
 func (r *Router) GET(relativePath string, handlers ...gin.HandlerFunc) gin.IRoutes {
 	return r.Gin.GET(relativePath, handlers...)
 }
+func (r *Router) PUT(relativePath string, handlers ...gin.HandlerFunc) gin.IRoutes {
+	return r.Gin.PUT(relativePath, handlers...)
+}
+func (r *Router) POST(relativePath string, handlers ...gin.HandlerFunc) gin.IRoutes {
+	return r.Gin.POST(relativePath, handlers...)
+}
