@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -24,6 +25,8 @@ func (r *Router) Run(addr ...string) (err error) {
 	if runerr == nil {
 		ioutil.WriteFile("/tmp/app-initialized", []byte("\n"), os.ModePerm)
 	}
+	stat, err := os.Stat("/tmp/app-initialized")
+	fmt.Println(fmt.Sprintf("%#v,%#v", stat, err))
 	return runerr
 }
 
