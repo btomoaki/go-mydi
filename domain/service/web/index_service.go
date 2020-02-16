@@ -2,7 +2,7 @@
 package web
 
 import (
-	"github.com/btomoaki/go-mydi/service/iface"
+	"github.com/btomoaki/go-mydi/domain/iface"
 
 	"github.com/gin-gonic/gin"
 )
