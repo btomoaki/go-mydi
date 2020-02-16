@@ -12,7 +12,7 @@ type Contoror struct {
 }
 
 func (c *Contoror) MapRoute() {
-	c.Server.GET("/", c.IndexService.Get())
+	c.Server.GET("/api/", c.IndexService.Get())
 	//c.Server.PUT("/", c.WebService.Index("put"))
 	//c.Server.POST("/", c.WebService.Index("post"))
 }
