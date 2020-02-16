@@ -1,6 +1,9 @@
 package router
 
 import (
+	"io/ioutil"
+	"os"
+
 	gin "github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/render"
 )
@@ -17,7 +20,11 @@ func NewRouter(render render.HTMLRender) *Router {
 }
 
 func (r *Router) Run(addr ...string) (err error) {
-	return r.Gin.Run(addr...)
+	runerr := r.Gin.RunUnix("/tmp/nginx.socket")
+	if err == nil {
+		ioutil.WriteFile("/tmp/app-initialized", []byte(""), os.ModePerm)
+	}
+	return runerr
 }
 
 func (r *Router) GET(relativePath string, handlers ...gin.HandlerFunc) gin.IRoutes {
