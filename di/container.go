@@ -1,10 +1,10 @@
 package di
 
 import (
-	"../app"
-	"../domain/iface"
-	"../domain/service/web"
-	"../infra/router"
+	"github.com/btomoaki/go-mydi/app"
+	"github.com/btomoaki/go-mydi/domain/iface"
+	"github.com/btomoaki/go-mydi/domain/service/web"
+	"github.com/btomoaki/go-mydi/infra/router"
 )
 
 type Di struct {

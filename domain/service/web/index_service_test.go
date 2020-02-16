@@ -3,8 +3,8 @@ package web_test
 import (
 	reflect "reflect"
 
-	"../../iface"
-	"../web"
+	"github.com/btomoaki/go-mydi/domain/iface"
+	"github.com/btomoaki/go-mydi/service/web"
 	"github.com/gin-gonic/gin"
 	gomock "github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"

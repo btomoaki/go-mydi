@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./di"
+	"github.com/btomoaki/go-mydi/di"
 )
 
 func main() {

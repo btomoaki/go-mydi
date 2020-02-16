@@ -1,8 +1,8 @@
 package app
 
 import (
-	"../domain/iface"
-	"../domain/service/web"
+	"github.com/btomoaki/go-mydi/domain/iface"
+	"github.com/btomoaki/go-mydi/domain/service/web"
 )
 
 type Contoror struct {

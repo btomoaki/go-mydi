@@ -1,9 +1,9 @@
 package app_test
 
 import (
-	"../app"
-	"../domain/iface"
-	"../domain/service/web"
+	"github.com/btomoaki/go-mydi/app"
+	"github.com/btomoaki/go-mydi/domain/iface"
+	"github.com/btomoaki/go-mydi/domain/service/web"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
